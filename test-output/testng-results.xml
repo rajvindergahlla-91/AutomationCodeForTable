@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-29T16:55:36 EDT" name="Default suite" finished-at="2026-04-29T16:55:41 EDT" duration-ms="4696">
+    <groups>
+    </groups>
+    <test started-at="2026-04-29T16:55:36 EDT" name="Default test" finished-at="2026-04-29T16:55:41 EDT" duration-ms="4696">
+      <class name="tableautomation.TableTest">
+        <test-method is-config="true" signature="initialise()[pri:0, instance:tableautomation.TableTest@4567f35d]" started-at="2026-04-29T16:55:36 EDT" name="initialise" finished-at="2026-04-29T16:55:36 EDT" duration-ms="291" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialise -->
+        <test-method is-config="true" signature="preReq(java.lang.reflect.Method)[pri:0, instance:tableautomation.TableTest@4567f35d]" started-at="2026-04-29T16:55:36 EDT" name="preReq" finished-at="2026-04-29T16:55:39 EDT" duration-ms="3178" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tableautomation.TableTest.TestCase2Test()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preReq -->
+        <test-method signature="TestCase2Test()[pri:0, instance:tableautomation.TableTest@4567f35d]" started-at="2026-04-29T16:55:39 EDT" name="TestCase2Test" finished-at="2026-04-29T16:55:40 EDT" duration-ms="819" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCase2Test -->
+        <test-method is-config="true" signature="packUptest(org.testng.ITestResult)[pri:0, instance:tableautomation.TableTest@4567f35d]" started-at="2026-04-29T16:55:40 EDT" name="packUptest" finished-at="2026-04-29T16:55:41 EDT" duration-ms="624" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TestCase2Test status=SUCCESS method=TableTest.TestCase2Test()[pri:0, instance:tableautomation.TableTest@4567f35d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- packUptest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tableautomation.TableTest@4567f35d]" started-at="2026-04-29T16:55:41 EDT" name="tearDown" finished-at="2026-04-29T16:55:41 EDT" duration-ms="330" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tableautomation.TableTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
