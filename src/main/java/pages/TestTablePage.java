@@ -15,6 +15,10 @@ public class TestTablePage {
 	private By intermediateOption = By.xpath("//legend[text()='Level']/following::label[text()=' Intermediate']");
 	private By advancedOption = By.xpath("//legend[text()='Level']/following::label[text()=' Advanced']");
 	private By beginnerListOptions = By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[4]");
+	
+	private By dropDown = By.xpath("//legend[text()='Min enrollments']/following::div[@id='enrollDropdown']");
+	private By enrollOps = By.xpath("//table//tr[not(contains(@style, 'display: none'))]/td[5]");
+	private By anyOptions = By.xpath("//ul[@class='dropdown-menu']//li[text()='10,000+']");
 
 	public void selectLanguageJava() {
 		UiActions.click(javaOp, "Java option selected");
@@ -37,4 +41,34 @@ public class TestTablePage {
 	{
 		 return UiActions.getElements(beginnerListOptions, "Beginners list");
 	}
+	
+	public void clickMinEnrollDropDown()
+	{
+		UiActions.click(dropDown, "Select dropdown");
+	}
+	
+	public void clickOnEnrollRange()
+	{
+		UiActions.click(anyOptions, "10000+ selected");
+	}
+	
+	public List<WebElement> getEnrollRangeList()
+	{
+		return UiActions.getElements(enrollOps,"enrollments range");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
