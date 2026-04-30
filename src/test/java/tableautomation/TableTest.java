@@ -33,4 +33,19 @@ public class TableTest extends BaseTest {
 		}
 		System.out.println("Only Beginners courses are displayed");
 	}
+	@Test
+	public void TestCase3Test()
+	{
+		TestTablePage tp = new TestTablePage();
+		tp.clickMinEnrollDropDown();
+		tp.clickOnEnrollRange();
+		List<WebElement> enrollList=tp.getEnrollRangeList();
+		for(WebElement ele : enrollList)
+		{
+			String entry =ele.getText();
+			Integer value=Integer.valueOf(entry);
+			Assert.assertTrue(value>=10000);
+		}
+		System.out.println("enrollments greater than 10000 exists");
+	}
 }
