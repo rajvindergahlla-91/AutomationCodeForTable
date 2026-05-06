@@ -86,6 +86,10 @@ public class TestTablePage {
 	{
 		UiActions.click(beginner, " Beginner option clicked");
 	}
+	public String getNoMatchText()
+	{
+		return UiActions.getText(noData, "no matching text");
+	}
 	
 	
 	

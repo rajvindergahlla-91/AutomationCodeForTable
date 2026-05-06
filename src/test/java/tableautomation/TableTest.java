@@ -70,20 +70,11 @@ public class TableTest extends BaseTest {
 	@Test
 	public void testCase5()
 	{
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
+		TestTablePage tp = new TestTablePage();
+		tp.selectPythonLanguage();
+		tp.clickBeginnerOption();
+		String message=tp.getNoMatchText();
+		Assert.assertTrue(message.contains("No matching courses."));
+		System.out.println("No matching courses is displayed");
 	}
 }
