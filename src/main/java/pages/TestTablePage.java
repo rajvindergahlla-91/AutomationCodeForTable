@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import utils.UiActions;
+import utils.WaitUtils;
 
 public class TestTablePage {
 
@@ -28,6 +29,13 @@ public class TestTablePage {
 	
 	private By beginner = By.xpath("//legend[text()='Level']/following-sibling::label[1]");
 	private By noData = By.xpath("//div[@id='noData']");
+	
+	private By resetButton = By.xpath("//button[text()='Reset']");
+	private By anyCheckbox = By.xpath("//legend[text()='Language']/following-sibling::label[' Any']/input[@checked]");
+	private By allLevelCheckBox = By.xpath("//legend[text()='Level']/following-sibling::label/input[@checked]");
+	private By enrollAny = By.xpath("//div[@class='dropdown-button']/span");
+	private By rows = By.xpath("//table/tbody/tr");
+
 
 	public void selectLanguageJava() {
 		UiActions.click(javaOp, "Java option selected");
@@ -90,9 +98,34 @@ public class TestTablePage {
 	{
 		return UiActions.getText(noData, "no matching text");
 	}
-	
-	
-	
+	public String getResetText()
+	{
+		return UiActions.getText(resetButton,"Reset button becomes visible");
+	}
+	public void clickReset()
+	{
+		UiActions.click(resetButton,"Reset button is clicked");
+	}
+	public WebElement checkLanguageOptionAny()
+	{
+		return WaitUtils.visibilityOfElementLocated(anyCheckbox);
+	}
+	public WebElement checkAllLevelOptions()
+	{
+		return WaitUtils.visibilityOfElementLocated(allLevelCheckBox);
+	}
+	public String checkAnyFieldUnderEnrollments()
+	{
+		return UiActions.getText(enrollAny,"Any Text in enrollment");
+	}
+	public boolean checkInvisibilityOfReset()
+	{
+		return WaitUtils.invisibilityOfElement(resetButton);
+	}
+	public List<WebElement> checkVisibilityOfRows()
+	{
+		return WaitUtils.visibilityOfElements(rows);
+	}
 	
 	
 	

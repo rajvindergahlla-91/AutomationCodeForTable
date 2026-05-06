@@ -77,4 +77,32 @@ public class TableTest extends BaseTest {
 		Assert.assertTrue(message.contains("No matching courses."));
 		System.out.println("No matching courses is displayed");
 	}
+	@Test
+	public void testCase6()
+	{
+		TestTablePage tp = new TestTablePage();
+		tp.selectLanguageJava();
+		String resetHeading =tp.getResetText();
+		Assert.assertEquals(resetHeading, "Reset");
+		System.out.println("Reset button is visible");
+		tp.clickReset();
+		WebElement checkBox =tp.checkLanguageOptionAny();
+		boolean selected = checkBox.isSelected();
+		Assert.assertTrue(selected);
+		System.out.println("'Any' checkbox under Language is selected");
+		WebElement allCheckBox =tp.checkAllLevelOptions();
+		boolean Tr = allCheckBox.isSelected();
+        Assert.assertTrue(Tr);
+		System.out.println("All the checkbox under level are selected");
+		String anyText=tp.checkAnyFieldUnderEnrollments();
+		Assert.assertEquals(anyText, "Any");
+		System.out.println("'Any' field is visible under enrollment");
+		boolean truee=tp.checkInvisibilityOfReset();
+		Assert.assertTrue(truee);
+		System.out.println("reset button is hidden");
+		List<WebElement> rowsEle =tp.checkVisibilityOfRows();
+		boolean yes = rowsEle.stream().allMatch(WebElement::isDisplayed);
+        Assert.assertTrue(yes);
+		System.out.println("all rows are visible in table");
+	}
 }
