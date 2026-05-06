@@ -25,6 +25,9 @@ public class TestTablePage {
 	private By pythonTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[3]");
 	private By beginnerTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[4]");
 	private By enrollTableEle = By.xpath("//table//tr[not(contains(@style, 'display:none'))]/td[5]");
+	
+	private By beginner = By.xpath("//legend[text()='Level']/following-sibling::label[1]");
+	private By noData = By.xpath("//div[@id='noData']");
 
 	public void selectLanguageJava() {
 		UiActions.click(javaOp, "Java option selected");
@@ -79,7 +82,10 @@ public class TestTablePage {
 	{
 		return UiActions.getText(enrollTableEle, "Enrollment Text");
 	}
-	
+	public void clickBeginnerOption()
+	{
+		UiActions.click(beginner, " Beginner option clicked");
+	}
 	
 	
 	

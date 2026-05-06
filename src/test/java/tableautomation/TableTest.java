@@ -67,4 +67,23 @@ public class TableTest extends BaseTest {
 		System.out.println("only Python Beginner courses with ≥ 10,000 enrollments are visible");
 		
 	}
+	@Test
+	public void testCase5()
+	{
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	}
 }
