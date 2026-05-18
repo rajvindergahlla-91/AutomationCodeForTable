@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import dataprovider.TableDataProvider;
 import pages.TestTablePage;
 @Test
 public class TableTest extends BaseTest {
@@ -105,4 +106,30 @@ public class TableTest extends BaseTest {
         Assert.assertTrue(yes);
 		System.out.println("all rows are visible in table");
 	}
+	
+	@Test(dataProvider = "tableData",
+		      dataProviderClass = TableDataProvider.class)
+
+		public void verifyTableDataTest(String id,
+		                                String courseName,
+		                                String language,
+		                                String level,
+		                                String enrollments,
+		                               String link )
+		                               {
+
+		    TestTablePage tp = new TestTablePage();
+
+		    boolean result = tp.verifyTableData(
+		            id,
+		            courseName,
+		            language,
+		            level,
+		            enrollments,
+		            link);
+		            
+
+		    Assert.assertTrue(result,
+		            "Table data not matched!");
+		}	
 }
