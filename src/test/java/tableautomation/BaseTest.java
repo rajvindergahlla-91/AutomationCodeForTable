@@ -24,28 +24,77 @@ public class BaseTest {
 	}
 
 	@BeforeMethod
-	public void preReq(Method method) throws IOException {
-		ExtentTestManager.createTest(method.getName());
-		DriverManager.initDriver();
-        WaitUtils.initWait();
-		DriverManager.goToUrl(BaseUtils.getConfigValue("url"));
+	public void preReq(Method method, Object[] testData) throws IOException {
+
+	    // Create parent only once per method execution cycle
+	    if (ExtentTestManager.parentTest == null) {
+	        ExtentTestManager.createParentTest(method.getName());
+	    }
+
+	    String nodeName = "Data Set : ";
+
+	    for (Object data : testData) {
+	        nodeName += data + " | ";
+	    }
+
+	    ExtentTestManager.createNode(nodeName);
+
+	    DriverManager.initDriver();
+
+	    WaitUtils.initWait();
+
+	    DriverManager.goToUrl(BaseUtils.getConfigValue("url"));
 	}
+//	public void preReq(Method method) throws IOException {
+//		ExtentTestManager.createTest(method.getName());
+//		DriverManager.initDriver();
+//        WaitUtils.initWait();
+//		DriverManager.goToUrl(BaseUtils.getConfigValue("url"));
+//	}
 
 	@AfterMethod
 	public void packUptest(ITestResult result) throws IOException {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			ExtentTestManager.log.pass("Test passed");
-		} else if (result.getStatus() == ITestResult.FAILURE) {
-			ExtentTestManager.log.fail(result.getThrowable(), MediaEntityBuilder
-					.createScreenCaptureFromPath(BaseUtils.getScreenShotPath(DriverManager.getDriver(),
-							result.getInstance().getClass().getSimpleName() + "." + result.getMethod().getMethodName()))
-					.build());
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			ExtentTestManager.log.skip("Test Skipped");
-		}
-		DriverManager.quitDriver();
 
+	    if (result.getStatus() == ITestResult.SUCCESS) {
+
+	        ExtentTestManager.childTest.pass("Test passed");
+
+	    } else if (result.getStatus() == ITestResult.FAILURE) {
+
+	        ExtentTestManager.childTest.fail(
+	                result.getThrowable(),
+	                MediaEntityBuilder.createScreenCaptureFromPath(
+	                        BaseUtils.getScreenShotPath(
+	                                DriverManager.getDriver(),
+	                                result.getInstance().getClass().getSimpleName()
+	                                        + "."
+	                                        + result.getMethod().getMethodName()))
+	                        .build());
+
+	    } else if (result.getStatus() == ITestResult.SKIP) {
+
+	        ExtentTestManager.childTest.skip("Test Skipped");
+	    }
+
+	    DriverManager.quitDriver();
+
+	   
 	}
+//	public void packUptest(ITestResult result) throws IOException {
+//		if (result.getStatus() == ITestResult.SUCCESS) {
+//			ExtentTestManager.childTest.pass("Test passed");
+//			//ExtentTestManager.log.pass("Test passed");
+//		} else if (result.getStatus() == ITestResult.FAILURE) {
+//			ExtentTestManager.childTest.fail(result.getThrowable(), MediaEntityBuilder
+//					.createScreenCaptureFromPath(BaseUtils.getScreenShotPath(DriverManager.getDriver(),
+//							result.getInstance().getClass().getSimpleName() + "." + result.getMethod().getMethodName()))
+//					.build());
+//		} else if (result.getStatus() == ITestResult.SKIP) {
+//			ExtentTestManager.childTest.skip("Test Skipped");
+//		}
+//		DriverManager.quitDriver();
+//
+//	}
 
 	@AfterSuite
 	public void tearDown() {

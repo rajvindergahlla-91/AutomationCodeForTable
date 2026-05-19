@@ -10,13 +10,13 @@ import managers.ExtentTestManager;
 public class UiActions {
 	public static String getText(By locator, String nameOfTheElement) {
 		String uiText= WaitUtils.visibilityOfElementLocated(locator).getText();
-		ExtentTestManager.log.info("UI text " + nameOfTheElement + "Text :"+ uiText);
+		ExtentTestManager.childTest.info("UI text " + nameOfTheElement + "Text :"+ uiText);
 		return uiText;
 	}
 
 	public static void click(By locator, String text) {
 		WaitUtils.elementToBeClickable(locator).click();
-		ExtentTestManager.log.info("click on " + text);
+		ExtentTestManager.childTest.info("click on " + text);
 	}
 	
 	  public static List<WebElement> getElements(By locator, String nameOfTheElement)
@@ -25,7 +25,7 @@ public class UiActions {
 		  for(WebElement list : list1) {
 			  String listText = list.getText();
 	  
-	  ExtentTestManager.log.info("UI text " + nameOfTheElement + "Text :" +
+	  ExtentTestManager.childTest.info("UI text " + nameOfTheElement + "Text :" +
 	  listText); } return list1;
 	  
 	  }
